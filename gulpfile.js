@@ -6,6 +6,7 @@ var minifyCss = require('gulp-minify-css');
 var autoPrefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
+var sass = require('gulp-sass');
 
 //File paths
 var DIST_PATH = 'public/dist';
@@ -13,11 +14,31 @@ var SCRIPTS_PATH = 'public/scripts/**/*.js';
 var HTML_PATH = 'public/**/*.html';
 var CSS_PATH = 'public/css/*.css';
 
-//styles
+//styles - regular css
+// gulp.task('styles', function () {
+//     console.log('starting styles task');
+    
+//     return gulp.src(['public/css/reset.css', CSS_PATH])
+//         .pipe(plumber( function(err) {
+//             console.log('Styles task Error');
+//             console.log(err);
+//             this.emit('end');
+//         }))
+//         .pipe(sourcemaps.init())
+//         .pipe(autoPrefixer())
+// 		.pipe(concat('styles.css'))
+//         .pipe(minifyCss())
+//         .pipe(sourcemaps.write())
+// 		.pipe(gulp.dest(DIST_PATH))
+// 		.pipe(livereload());
+// });
+
+
+//styles for sass - scss
 gulp.task('styles', function () {
     console.log('starting styles task');
     
-    return gulp.src(['public/css/reset.css', CSS_PATH])
+    return gulp.src('public/scss/styles.scss')
         .pipe(plumber( function(err) {
             console.log('Styles task Error');
             console.log(err);
@@ -25,8 +46,9 @@ gulp.task('styles', function () {
         }))
         .pipe(sourcemaps.init())
         .pipe(autoPrefixer())
-		.pipe(concat('styles.css'))
-        .pipe(minifyCss())
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }))
         .pipe(sourcemaps.write())
 		.pipe(gulp.dest(DIST_PATH))
 		.pipe(livereload());
@@ -64,6 +86,7 @@ gulp.task('watch', function () {
     
     //watch
 	gulp.watch(SCRIPTS_PATH, ['scripts']);
-    gulp.watch(CSS_PATH, ['styles']);
+    // gulp.watch(CSS_PATH, ['styles']);
+    gulp.watch('public/scss/**/*.scss', ['styles']);
     
 });

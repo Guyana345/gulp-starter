@@ -33,10 +33,12 @@ server.start(function(err){
     }
 });
 
-TODO:
+TODO/Done:
 -- CSS
 --- SCSS option
+---- for SCSS check the SCSS branch
 --- LESS option
+---- for LESS check LESS branch
 -- Javascript
 --- ES6/ES215 compiling with babel
 --* upagrade the default tasks
