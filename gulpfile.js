@@ -4,6 +4,8 @@ var livereload = require('gulp-livereload');
 var concat = require('gulp-concat');
 var minifyCss = require('gulp-minify-css');
 var autoPrefixer = require('gulp-autoprefixer');
+var plumber = require('gulp-plumber');
+var sourcemaps = require('gulp-sourcemaps');
 
 //File paths
 var DIST_PATH = 'public/dist';
@@ -16,11 +18,16 @@ gulp.task('styles', function () {
     console.log('starting styles task');
     
     return gulp.src(['public/css/reset.css', CSS_PATH])
-        .pipe(autoPrefixer({
-            browsers: ['last 2 versions']
+        .pipe(plumber( function(err) {
+            console.log('Styles task Error');
+            console.log(err);
+            this.emit('end');
         }))
+        .pipe(sourcemaps.init())
+        .pipe(autoPrefixer())
 		.pipe(concat('styles.css'))
-		.pipe(minifyCss())
+        .pipe(minifyCss())
+        .pipe(sourcemaps.write())
 		.pipe(gulp.dest(DIST_PATH))
 		.pipe(livereload());
 });

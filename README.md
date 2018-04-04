@@ -34,7 +34,6 @@ server.start(function(err){
 });
 
 TODO:
--- Handle Erros
 -- CSS
 --- SCSS option
 --- LESS option
