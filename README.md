@@ -33,6 +33,17 @@ server.start(function(err){
     }
 });
 
+1. Download the branch
+Commands to run
+npm install
+gulp or gulp watch
+- this will generate the dist folder that is required and used in the index .html
+nodemon/ node server.js - to start the server
+or gulp
+open your browser and go to 
+localhost:3000
+
+
 TODO/Done:
 
 -- CSS
@@ -42,9 +53,23 @@ for SCSS check the SCSS branch
 for LESS check the LESS branch
 -- Javascript
 --- ES6/ES215 compiling with babel
---* upagrade the default tasks
+--* upgrade the default tasks
 -code structure
--adding source maps
+
+
+Functionality Added:
+- error handling with plumber
+- concatenate 
+- minify/uglify CSS and JavaSript
+- complie es6 with gulp-babel convert es6 to es2015
+- source maps for CSS and JavaScript for debuging (view console to see where the code come from)
+- Scss / Less option : view the respective branch
+- Image compression lossless/lossy
+
+optional
+- Working with Handlebars and templates
+- for zipping the folder use the gulp task: gulp export
 
 Other:
---
+- Deleting files from dist folder : starting with a clean directory
+

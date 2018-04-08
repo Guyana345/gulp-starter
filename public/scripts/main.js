@@ -1,3 +1,21 @@
-var name = 'Maks';
+class Person {
+   constructor(name) {
+      this.name = name;
+   }
 
-document.write('hello ' + name + '!');
+   hello() {
+      if (typeof this.name === 'string') {
+         return 'Hello, I am ' + this.name;
+      }else {
+         return 'Hello';
+      }
+   }
+}
+
+
+var person = new Person('Tafa');
+var greetHTML = templates['greeting']({
+   message: person.hello()
+});
+
+document.write(greetHTML);
