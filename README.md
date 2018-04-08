@@ -45,16 +45,16 @@ localhost:3000
 
 
 TODO/Done:
-
--- CSS
---- SCSS option
+ CSS
+- SCSS option
 for SCSS check the SCSS branch
---- LESS option
+- LESS option
 for LESS check the LESS branch
--- Javascript
---- ES6/ES215 compiling with babel
---* upgrade the default tasks
--code structure
+
+Javascript
+-  ES6/ES215 compiling with babel
+- upgrade the default tasks
+- code structure
 
 
 Functionality Added:
